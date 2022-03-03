@@ -46,6 +46,19 @@ filter {
 
 The docker-compose manifest shares a volume across our application and Logstash.  This makes it easier for me to demonstrate this change. I'm also using an input file directive, whereas in contrast, we're actually using Filebeat.  For bravity, I'm omitting Filebeat here.
 
+---
+ 
+## Architecture overview
+
+```mermaid
+graph TD;
+    Web_App["web .net 6 port:5005"]==/mess, /ad ==>LogStash;
+    LogStash["logstash input file"]--fitlered logs-->Elasticsearch;
+    Elasticsearch["elasticsearch port:9200"]-.logs.->Kibana["kibana port:5601"];
+```
+
+---
+
 To build then run:
 
 ```powershell
