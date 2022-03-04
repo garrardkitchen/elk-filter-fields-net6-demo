@@ -52,10 +52,10 @@ The docker-compose manifest shares a volume across our application and Logstash.
 
 ```mermaid
 graph LR;        
-    Web_App["web .net 6 port:5005"]==/mess, /ad ==>LogStash;    
+    Web_App{{"web .net 6 port:5005"}}==/mess, /ad ==>LogStash;    
     subgraph elk stack 
-    LogStash["logstash input file"]--filtered logs-->Elasticsearch;
-    Elasticsearch["elasticsearch port:9200"]-.logs.->Kibana["kibana port:5601"];
+    LogStash[/"logstash input file"/]--filtered logs-->Elasticsearch;
+    Elasticsearch[("es port:9200")]-.logs.->Kibana[["kibana port:5601"]];
     end 
     click Web_App "http://localhost:5005/mess"
 ```
