@@ -15,7 +15,7 @@
         webApplication.MapGet("/ad", (HttpContext ctx, Serilog.ILogger logger) =>
         {
             var response = $"ApplicationData {DateTime.Now}";
-            logger.ForContext("ApplicationData", new MessageDto(Guid.NewGuid())).Information(response);
+            logger.ForContext("ApplicationData.Id", new MessageDto(Guid.NewGuid())).Information(response);
             return response;
         });
     }
