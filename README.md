@@ -29,13 +29,12 @@ filter {
 
 Filter for uc-2:
 
-```yaml
+```yml
 filter {
   ruby {
     code => '
       event.to_hash["Properties"].to_hash.keys.each { |v|        
-        if v.is_a? String and v.start_with?("Message-")
-          puts v          
+        if v.is_a? String and v.start_with?("Message-")          
           event.remove("[Properties][#{v}]")
         end
       }
